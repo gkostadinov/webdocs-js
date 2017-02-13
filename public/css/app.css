@@ -1,0 +1,173 @@
+.label {
+    display: inline;
+    padding: .3rem .8rem .4rem;
+    font-size: 80%;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+
+.label.source a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.label.source a:hover {
+    text-decoration: underline;
+}
+
+.label.label-warning {
+    background-color: #F56A19;
+}
+
+.label.label-success {
+    background-color: #547980;
+}
+
+.label.label-info {
+    background-color: #008cba;
+}
+
+header {
+    background: #454d59 no-repeat fixed;
+    background-position: center top;
+    background-size: 170px;
+}
+
+header .container {
+    padding: 3rem 0 1.5rem 0;
+}
+
+header .container .row {
+    text-align: center;
+}
+
+header .container .row .title {
+    color: #fff;
+    margin-bottom: 0.1rem
+}
+
+header .container .row .title a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header .container .row .title sup {
+    color: rgba(78, 205, 196, 0.6);
+    font-size: 60%
+}
+
+header .container .row .subtitle {
+    color: #ccc;
+}
+
+section.content .container {
+    margin-top: 2rem;
+}
+
+section.content .container .box {
+    margin-bottom: 5rem;
+}
+
+section.content .container .box .row.box-title {
+    background-color: #547980;
+    border-radius: .4rem .4rem 0 0;
+    padding: 1.3rem 1rem .2rem 1.5rem
+}
+
+section.content .container .box .row.box-title .box-title-text {
+    display: inline-block;
+    float: left;
+}
+
+section.content .container .box .row.box-title .box-title-text  a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section.content .container .box .row.box-title .box-title-text h4 {
+    display: inline-block;
+    margin: 0 0 1rem 0;
+    padding: 0;
+    color: #fff;
+    /*font-size: 3.0rem;*/
+}
+
+section.content .container .box .row.box-title .box-title-button {
+    display: inline-block;
+    float: right;
+}
+
+section.content .container .box .row.box-content {
+    margin-top: 0rem;
+    border: 1px solid rgba(84,121,128,.3);
+    box-shadow: 0 .1rem rgba(84,121,128,.3);
+}
+
+section.content .container .box .row.box-content.round-bottom {
+    border-radius: 0 0 .4rem .4rem;
+}
+
+.ql-toolbar.ql-snow,
+.ql-container.ql-snow {
+    border: none;
+}
+
+.ql-toolbar.ql-snow {
+    border-bottom: 1px solid rgba(84,121,128,.3);
+}
+
+.modal {
+    width: 600px;
+    background-color: #fff;
+    position: absolute;
+    z-index: 999;
+    display: none;
+    border: 1px solid #454d59;
+}
+
+.modal .box-title {
+    background-color: #547980;
+    padding: 10px;
+}
+
+.modal .box-title .box-title-text {
+    text-align: center;
+    display: inline-block;
+    float: left;
+}
+
+.modal .box-title .box-title-text h5 {
+    color: #fff;
+    margin-bottom: 0px;
+}
+
+.modal .box-title .box-title-button {
+    display: inline-block;
+    float: right;
+}
+
+.modal .box-content {
+    padding: 30px;
+}
+
+.modal .box-content h5 {
+    margin-bottom: 0px;
+}
+
+.modal .box-content #next_step > .row {
+    margin-top: 20px;
+}
+
+.modal .box-content #next_step > .row:first-child {
+    margin-top: 10px;
+}
+
+
+.modal .box-content #title_input[disabled=true] {
+    border: none;
+}
