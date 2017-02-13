@@ -1,7 +1,7 @@
 {
   "name": "webdocs-js",
   "description": "Anonymous collaborative document editing",
-  "version": "0.0.1",
+  "version": "0.3",
   "private": true,
   "dependencies": {
     "body-parser": "^1.16.1",
