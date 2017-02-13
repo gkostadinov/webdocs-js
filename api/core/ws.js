@@ -69,7 +69,7 @@ var userConnected = function(ws, req) {
         }
     });
 
-    ws.on("close", function () {
+    ws.on('close', function () {
         if (!(userId in users))
             return;
 
