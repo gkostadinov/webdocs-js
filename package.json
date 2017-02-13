@@ -1,0 +1,12 @@
+{
+  "name": "webdocs-js",
+  "description": "Anonymous collaborative document editing",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "mongodb": "^2.2.22",
+    "shortid": "^2.2.6"
+  }
+}
