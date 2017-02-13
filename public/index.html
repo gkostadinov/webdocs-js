@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Webdocs - anonymous collaborative document editing</title>
+        <meta name="description" content="Anonymous collaborative document editing">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="css/vendor/normalize.css">
+        <link rel="stylesheet" href="css/vendor/quill.css">
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="row">
+                    <h2 class="title">Webdocs <sup>beta</sup></h2>
+                    <h5 class="subtitle">
+                        anonymous collaborative document editing
+                    </h5>
+                </div>
+            </div>
+        </header>
+
+        <section class="content">
+            <div class="container">
+                 <section class="box">
+                    <div class="row box-title">
+                        <div class="box-title-text">
+                            <h4 id="title">Untitled</h4>
+                        </div>
+                        <div class="box-title-button">
+                            <a href="javascript:void(0)"  class="button" id="share_btn" title="Share for viewing or editing" style="display: none">Share</a>
+                        </div>
+                    </div>
+                    <div class="row box-content small-padding round-bottom">
+                        <div id="toolbar"></div>
+                        <div id="editor"></div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <div class="modal" id="modal" data-trigger="#share_btn" data-close="#close_btn">
+            <section class="box">
+                <div class="row box-title">
+                    <div class="box-title-text">
+                        <h5>Share the document</h5>
+                    </div>
+                    <div class="box-title-button">
+                        <a href="javascript:void(0)" class="button" id="close_btn" title="Close the modal">Close</a>
+                    </div>
+                </div>
+                <div class="row box-content small-padding round-bottom">
+                    <div class="row">
+                        <div class="row">
+                            <h5>Title:</h5>
+                        </div>
+                        <div class="row">
+                            <input id="title_input" class="twelve columns" type="text" value="">
+                        </div>
+                        <div class="row" id="share_confirm" style="margin-top: 20px;">
+                            <a href="javascript:void(0)" class="button" title="Share">Share</a>
+                        </div>
+                    </div>
+                    <div id="next_step" style="display: none">
+                        <div class="row">
+                            <div class="row">
+                                <h5>Link for edit:</h5>
+                            </div>
+                            <div class="row">
+                                <input id="edit_link" class="twelve columns" type="text" onClick="this.setSelectionRange(0, this.value.length)" value="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row">
+                                <h5>Link for view:</h5>
+                            </div>
+                            <div class="row">
+                                <input id="view_link" class="twelve columns" type="text" onClick="this.setSelectionRange(0, this.value.length)" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <script src="js/vendor/quill.js"></script>
+
+        <script src="js/base.js?v=2"></script>
+        <script src="js/config.js?v=3"></script>
+        <script src="js/socket.js?v=2"></script>
+        <script src="js/modal.js?v=1"></script>
+        <script src="js/app.js?v=4"></script>
+    </body>
+</html>
