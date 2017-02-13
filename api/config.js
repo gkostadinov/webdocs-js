@@ -4,6 +4,6 @@ var config = {
     'dbname': 'webdocs'
 }
 
-exports.get = function(configName) {
+module.exports.get = function(configName) {
     return config[configName];
 }
