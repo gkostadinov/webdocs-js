@@ -1,7 +1,7 @@
 var shortid = require('shortid'),
-    db = require('../db.js');
+    db = require('../core/db.js');
 
-exports.addDocument = function(req, res) {
+module.exports.addDocument = function(req, res) {
     var document = req.body;
     if (!('title' in document && 'content' in document)) {
         res.send({'status': 'fail', 'reason': 'incomplete body'});
@@ -31,7 +31,7 @@ exports.addDocument = function(req, res) {
     });
 };
 
-exports.getByViewId = function(req, res) {
+module.exports.getByViewId = function(req, res) {
     var viewId = req.params.id;
     if (!shortid.isValid(viewId)) {
         res.send({'status': 'fail', 'reason': 'the provided id is not valid'});
@@ -58,7 +58,7 @@ exports.getByViewId = function(req, res) {
     });
 };
 
-exports.getByEditId = function(req, res) {
+module.exports.getByEditId = function(req, res) {
     var editId = req.params.id;
     if (!shortid.isValid(editId)) {
         res.send({'status': 'fail', 'reason': 'the provided id is not valid'});
