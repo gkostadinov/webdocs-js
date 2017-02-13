@@ -5,6 +5,7 @@ Anonymous collaborative document editing
 ### What is Webdocs?
 
 Webdocs is:
+
 * A lightweight online document editing tool
 * Collaborative content creation
 * Anonymous-only - no sign up required, no personal data is collected
