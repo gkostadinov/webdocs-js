@@ -1,29 +1,23 @@
-# README #
+# Webdocs
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Anonymous collaborative document editing
 
-### What is this repository for? ###
+### What is Webdocs?
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Webdocs is:
+* A lightweight online document editing tool
+* Collaborative content creation
+* Anonymous-only - no sign up required, no personal data is collected
+* Short URLs for easy sharing with collegues and friends
 
-### How do I get set up? ###
+### Technologies used
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* JavaScript
+* Node.js
+* Express.js
+* WebSockets
+* Quill.js WYSIWYG editor
 
-### Contribution guidelines ###
+### More
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+The repository contains code developed for the "Advanced JavaScript" course in FMI, Sofia University. Uses MIT license (see LICENSE file).
