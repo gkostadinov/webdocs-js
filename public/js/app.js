@@ -47,7 +47,7 @@ function App(docId=null, editId=null, viewId=null,
 }
 
 App.prototype.initSocket = function() {
-    this.ws = (this.ws === null && this.docId !== null && !this.readOnly) ? new Socket(this.docId, this.wsReceiveMessage.bind(this)) : null;
+    this.ws = (this.ws === null && this.docId !== null) ? new Socket(this.docId, this.wsReceiveMessage.bind(this), this.readOnly) : null;
 }
 
 App.prototype.initEditor = function(selector, editorOptions) {
@@ -144,6 +144,10 @@ App.prototype.wsReceiveMessage = function(data){
 }
 
 App.prototype.initEditorChangeObserver = function() {
+    if (this.readOnly) {
+        return;
+    }
+
     var func = function() {
         if (this.editorChanges.length > 0) {
             if (this.ws !== null) {

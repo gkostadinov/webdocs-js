@@ -1,11 +1,11 @@
-function Socket(docId, onReceive) {
+function Socket(docId, onReceive, readOnly) {
     this.docId = docId;
     this.onReceive = onReceive;
 
     this.ws = new WebSocket(WEBSOCKET_IP);
     this.ws.onmessage = this.receive.bind(this);
 
-    this.send({'document_id': docId})
+    this.send({'document_id': docId, 'read_only': readOnly})
 }
 
 Socket.prototype.send = function(message, callback) {
@@ -24,9 +24,9 @@ Socket.prototype.receive = function(message) {
     }
 
     var data = JSON.parse(message.data);
-    if (data.document_id && data.document_id == this.docId) {
+    //if (data.document_id && data.document_id == this.docId) {
         this.onReceive(data);
-    }
+    //}
 }
 
 Socket.prototype.waitForConnection = function(callback, interval) {

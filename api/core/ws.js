@@ -3,7 +3,9 @@ var shortid = require('shortid'),
 
 var wss = null,
     users = {},
-    rooms = {};
+    rooms = {},
+    readOnlyUsers = {},
+    readOnlyRooms = {};
 
 var getWsClient = function(userId) {
     var foundClient = null;
@@ -25,6 +27,7 @@ var userConnected = function(ws, req) {
 
     ws.userId = userId;
     users[userId] = '';
+    readOnlyUsers[userId] = '';
 
     ws.on('message', function(msg) {
         msg = JSON.parse(msg);
@@ -32,6 +35,27 @@ var userConnected = function(ws, req) {
             return;
 
         var docId = msg.document_id;
+        var readOnly = ('read_only' in msg) ? msg.read_only : false;
+        if (readOnly) {
+             db.documents.findOne({'view_id': docId}, function(err, item) {
+                if (err) {
+                    return;
+                } else {
+                    var editId = item.edit_id;
+                    if (readOnlyUsers[userId] === '') {
+                        if (!(editId in readOnlyRooms)) {
+                            readOnlyRooms[editId] = [];
+                        }
+                        readOnlyRooms[editId].push(userId);
+
+                        readOnlyUsers[userId] = editId;
+                    }
+                }
+            });
+
+            return;
+        }
+
         if (users[userId] === '') {
             if (!(docId in rooms)) {
                 rooms[docId] = [];
@@ -45,17 +69,26 @@ var userConnected = function(ws, req) {
             return;
         }
 
-        var room = rooms[users[userId]];
-        room.forEach(function(u) {
+        var sendToUser = function(u) {
             if (u != userId) {
                 var client = getWsClient(u);
                 if (client !== null) {
-                    client.send(JSON.stringify({'document_id': docId, 'delta': msg.delta}));
+                    client.send(JSON.stringify({'delta': msg.delta}));
                 } else {
                     delete room[room.indexOf(u)];
                 }
             }
-        });
+        };
+
+        var userDoc = users[userId];
+        if (userDoc in rooms) {
+            var room = rooms[users[userId]];
+            room.forEach(sendToUser);
+        }
+        if (userDoc in readOnlyRooms) {
+            var readOnlyRoom = readOnlyRooms[users[userId]];
+            readOnlyRoom.forEach(sendToUser);
+        }
 
         if ('content' in msg) {
             db.documents.update(
@@ -70,10 +103,12 @@ var userConnected = function(ws, req) {
     });
 
     ws.on('close', function () {
-        if (!(userId in users))
-            return;
+        if (userId in users)
+            delete users[userId];
 
-        delete users[userId];
+        if (userId in readOnlyUsers)
+            delete readOnlyUsers[userId];
+
         console.log('User disconnected: ' + userId);
     });
 };
